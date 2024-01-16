@@ -1,7 +1,7 @@
 import { prisma } from '$lib';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import * as crypto from 'crypto';
+import * as crypto from "node:crypto";
 
 function hash(original:string, ) : {salt:string, hash:string}{
     const salt = crypto.randomBytes(16).toString('base64');
@@ -11,9 +11,8 @@ function hash(original:string, ) : {salt:string, hash:string}{
 
 function validate(original:string, salt:string, storedHash:string) : boolean{
     const hash = crypto.pbkdf2Sync(original, salt, 1000, 64, 'sha256').toString('base64');
-    return hash == storedHash;
+    return hash == storedHash;   
 }
-
 export const load = (async ({cookies}) => {
     const tokenID = cookies.get('token');
     
