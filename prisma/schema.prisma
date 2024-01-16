@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id        String @id @default(uuid())
+  email     String @unique
+  hash      String
+  salt      String
+  projectID String? 
+  tokens    Token[]
+  projects  Project[] @relation("owner")
+  favorites Project[]
+}
+
+model Token{
+  id      String @id @default(uuid())
+  expires DateTime
+  userID  String
+  user    User @relation(fields: [userID], references: [id])
+}
+
+model Project{
+  id          String @id @default(uuid())
+  name        String 
+  width       Int 
+  height      Int 
+  public      Boolean @default(false)
+  ownerEmail  String
+  owner       User @relation("owner", fields: [ownerEmail], references: [email])
+  pixels      Pixel[]
+  favoritedBy User[]
+}
+
+model Pixel{
+  id        Int @id @default(autoincrement())
+  x         Int
+  y         Int
+  color     String
+  projectID String
+  project   Project @relation(fields: [projectID], references: [id])
+  placedBy  String
+  placedAt  DateTime
+}

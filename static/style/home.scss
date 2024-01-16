@@ -1,0 +1,6 @@
+@use './global.scss' as global;
+
+main#home{
+    background: global.$white;
+}
+

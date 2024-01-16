@@ -1,0 +1,18 @@
+
+$white: #f4f4fa;
+$black: #101014;
+$black2: #202020;
+$black3: #3c3c3c;
+$main: #f29559;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $black;
+    font-family: Arial, Helvetica, sans-serif;
+
+    main{
+        height: 100vh;
+    }
+}
