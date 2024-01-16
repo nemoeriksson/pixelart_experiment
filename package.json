@@ -25,9 +25,14 @@
 		"@prisma/client": "^5.7.0",
 		"color-picker-svelte": "^1.4.0",
 		"crypto": "^1.0.1",
+		"crypto-js": "^4.2.0",
+		"cryptojs": "^2.5.3",
 		"prisma": "^5.7.0"
 	},
 	"engines": {
 		"node": ">=18"
-   }
+	},
+	"browser": {
+		"crypto": false
+	}
 }

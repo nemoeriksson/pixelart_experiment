@@ -1,7 +1,7 @@
 import { prisma } from '$lib';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
-import * as crypto from 'cryptojs';
+import * as crypto from 'crypto-js';
 
 function hash(original:string, ) : {salt:string, hash:string}{
     const salt = crypto.randomBytes(16).toString('base64');
