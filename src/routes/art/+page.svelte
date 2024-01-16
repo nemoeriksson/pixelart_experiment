@@ -1,6 +1,6 @@
 <style type="text/scss">
     @import '/style/art.scss';
-    </style>
+</style>
 <script lang="ts">
 import { browser } from '$app/environment';
 import { enhance } from '$app/forms';
